@@ -1,0 +1,52 @@
+services:
+  usuarios-service:
+    build: ./usuarios-service
+    container_name: panol_usuarios
+    restart: unless-stopped
+    env_file: .env
+    environment:
+      PORT: "8081"
+      FIREBASE_CREDENTIALS_PATH: /run/secrets/firebase-key.json
+    ports:
+      - "8081:8081"
+    volumes:
+      - ./secrets/firebase-key.json:/run/secrets/firebase-key.json:ro
+
+  equipos-service:
+    build: ./equipos-service
+    container_name: panol_equipos
+    restart: unless-stopped
+    env_file: .env
+    environment:
+      PORT: "8082"
+      FIREBASE_CREDENTIALS_PATH: /run/secrets/firebase-key.json
+    ports:
+      - "8082:8082"
+    volumes:
+      - ./secrets/firebase-key.json:/run/secrets/firebase-key.json:ro
+
+  prestamos-service:
+    build: ./prestamos-service
+    container_name: panol_prestamos
+    restart: unless-stopped
+    env_file: .env
+    environment:
+      PORT: "8083"
+      FIREBASE_CREDENTIALS_PATH: /run/secrets/firebase-key.json
+    ports:
+      - "8083:8083"
+    volumes:
+      - ./secrets/firebase-key.json:/run/secrets/firebase-key.json:ro
+
+  reportes-service:
+    build: ./reportes-service
+    container_name: panol_reportes
+    restart: unless-stopped
+    env_file: .env
+    environment:
+      PORT: "8084"
+      FIREBASE_CREDENTIALS_PATH: /run/secrets/firebase-key.json
+    ports:
+      - "8084:8084"
+    volumes:
+      - ./secrets/firebase-key.json:/run/secrets/firebase-key.json:ro

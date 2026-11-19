@@ -1,0 +1,491 @@
+{
+  "info": {
+    "name": "PanolApp - 4 microservicios",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "variable": [
+    {
+      "key": "host",
+      "value": "http://localhost"
+    },
+    {
+      "key": "apiKey",
+      "value": "cambia-esta-clave-por-una-propia"
+    },
+    {
+      "key": "correo",
+      "value": "admin@panol.cl"
+    },
+    {
+      "key": "rol",
+      "value": "Administrador"
+    }
+  ],
+  "item": [
+    {
+      "name": "usuarios-service",
+      "item": [
+        {
+          "name": "Sincronizar usuario",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "X-API-KEY",
+                "value": "{{apiKey}}"
+              },
+              {
+                "key": "X-Usuario",
+                "value": "{{correo}}"
+              },
+              {
+                "key": "X-Rol",
+                "value": "{{rol}}"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": "{{host}}:8081/api/usuarios/sincronizar",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"nombre\": \"Ana Perez\",\n  \"correo\": \"ana@duocuc.cl\",\n  \"telefono\": \"+56912345678\"\n}"
+            }
+          }
+        },
+        {
+          "name": "Listar usuarios (admin)",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "X-API-KEY",
+                "value": "{{apiKey}}"
+              },
+              {
+                "key": "X-Usuario",
+                "value": "{{correo}}"
+              },
+              {
+                "key": "X-Rol",
+                "value": "{{rol}}"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": "{{host}}:8081/api/usuarios"
+          }
+        },
+        {
+          "name": "Obtener usuario",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "X-API-KEY",
+                "value": "{{apiKey}}"
+              },
+              {
+                "key": "X-Usuario",
+                "value": "{{correo}}"
+              },
+              {
+                "key": "X-Rol",
+                "value": "{{rol}}"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": "{{host}}:8081/api/usuarios/1"
+          }
+        },
+        {
+          "name": "Cambiar rol (admin)",
+          "request": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "X-API-KEY",
+                "value": "{{apiKey}}"
+              },
+              {
+                "key": "X-Usuario",
+                "value": "{{correo}}"
+              },
+              {
+                "key": "X-Rol",
+                "value": "{{rol}}"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": "{{host}}:8081/api/usuarios/2/rol",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"rol\": \"Administrador\"\n}"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "equipos-service",
+      "item": [
+        {
+          "name": "Listar equipos",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "X-API-KEY",
+                "value": "{{apiKey}}"
+              },
+              {
+                "key": "X-Usuario",
+                "value": "{{correo}}"
+              },
+              {
+                "key": "X-Rol",
+                "value": "{{rol}}"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": "{{host}}:8082/api/equipos"
+          }
+        },
+        {
+          "name": "Buscar por categoria",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "X-API-KEY",
+                "value": "{{apiKey}}"
+              },
+              {
+                "key": "X-Usuario",
+                "value": "{{correo}}"
+              },
+              {
+                "key": "X-Rol",
+                "value": "{{rol}}"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": "{{host}}:8082/api/equipos?categoria=Medición&q=multi"
+          }
+        },
+        {
+          "name": "Obtener equipo",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "X-API-KEY",
+                "value": "{{apiKey}}"
+              },
+              {
+                "key": "X-Usuario",
+                "value": "{{correo}}"
+              },
+              {
+                "key": "X-Rol",
+                "value": "{{rol}}"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": "{{host}}:8082/api/equipos/1"
+          }
+        },
+        {
+          "name": "Crear equipo (admin)",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "X-API-KEY",
+                "value": "{{apiKey}}"
+              },
+              {
+                "key": "X-Usuario",
+                "value": "{{correo}}"
+              },
+              {
+                "key": "X-Rol",
+                "value": "{{rol}}"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": "{{host}}:8082/api/equipos",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"nombre\": \"Esmeril angular\",\n  \"categoria\": \"Herramientas eléctricas\",\n  \"cantidadTotal\": 4,\n  \"stockMinimo\": 1\n}"
+            }
+          }
+        },
+        {
+          "name": "Actualizar equipo (admin)",
+          "request": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "X-API-KEY",
+                "value": "{{apiKey}}"
+              },
+              {
+                "key": "X-Usuario",
+                "value": "{{correo}}"
+              },
+              {
+                "key": "X-Rol",
+                "value": "{{rol}}"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": "{{host}}:8082/api/equipos/1",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"nombre\": \"Taladro percutor 650W\",\n  \"categoria\": \"Herramientas eléctricas\",\n  \"cantidadTotal\": 7,\n  \"stockMinimo\": 2\n}"
+            }
+          }
+        },
+        {
+          "name": "Eliminar equipo (admin)",
+          "request": {
+            "method": "DELETE",
+            "header": [
+              {
+                "key": "X-API-KEY",
+                "value": "{{apiKey}}"
+              },
+              {
+                "key": "X-Usuario",
+                "value": "{{correo}}"
+              },
+              {
+                "key": "X-Rol",
+                "value": "{{rol}}"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": "{{host}}:8082/api/equipos/6"
+          }
+        }
+      ]
+    },
+    {
+      "name": "prestamos-service",
+      "item": [
+        {
+          "name": "Prestar equipo",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "X-API-KEY",
+                "value": "{{apiKey}}"
+              },
+              {
+                "key": "X-Usuario",
+                "value": "{{correo}}"
+              },
+              {
+                "key": "X-Rol",
+                "value": "{{rol}}"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": "{{host}}:8083/api/prestamos",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"equipoId\": 1,\n  \"solicitante\": \"Juan Perez\",\n  \"cantidad\": 2,\n  \"dias\": 3\n}"
+            }
+          }
+        },
+        {
+          "name": "Listar prestamos",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "X-API-KEY",
+                "value": "{{apiKey}}"
+              },
+              {
+                "key": "X-Usuario",
+                "value": "{{correo}}"
+              },
+              {
+                "key": "X-Rol",
+                "value": "{{rol}}"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": "{{host}}:8083/api/prestamos"
+          }
+        },
+        {
+          "name": "Listar solo activos",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "X-API-KEY",
+                "value": "{{apiKey}}"
+              },
+              {
+                "key": "X-Usuario",
+                "value": "{{correo}}"
+              },
+              {
+                "key": "X-Rol",
+                "value": "{{rol}}"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": "{{host}}:8083/api/prestamos?estado=Activo"
+          }
+        },
+        {
+          "name": "Registrar devolucion (admin)",
+          "request": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "X-API-KEY",
+                "value": "{{apiKey}}"
+              },
+              {
+                "key": "X-Usuario",
+                "value": "{{correo}}"
+              },
+              {
+                "key": "X-Rol",
+                "value": "{{rol}}"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": "{{host}}:8083/api/prestamos/1/devolucion"
+          }
+        }
+      ]
+    },
+    {
+      "name": "reportes-service",
+      "item": [
+        {
+          "name": "Resumen (admin)",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "X-API-KEY",
+                "value": "{{apiKey}}"
+              },
+              {
+                "key": "X-Usuario",
+                "value": "{{correo}}"
+              },
+              {
+                "key": "X-Rol",
+                "value": "{{rol}}"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": "{{host}}:8084/api/reportes/resumen"
+          }
+        },
+        {
+          "name": "Top equipos (admin)",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "X-API-KEY",
+                "value": "{{apiKey}}"
+              },
+              {
+                "key": "X-Usuario",
+                "value": "{{correo}}"
+              },
+              {
+                "key": "X-Rol",
+                "value": "{{rol}}"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": "{{host}}:8084/api/reportes/top-equipos?limite=5"
+          }
+        },
+        {
+          "name": "Mi resumen",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "X-API-KEY",
+                "value": "{{apiKey}}"
+              },
+              {
+                "key": "X-Usuario",
+                "value": "{{correo}}"
+              },
+              {
+                "key": "X-Rol",
+                "value": "{{rol}}"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": "{{host}}:8084/api/reportes/mi-resumen"
+          }
+        }
+      ]
+    }
+  ]
+}

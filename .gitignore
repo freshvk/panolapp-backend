@@ -1,0 +1,9 @@
+.env
+secrets/*
+!secrets/LEEME.txt
+*.pem
+*.json.key
+target/
+.idea/
+.vscode/
+*.iml

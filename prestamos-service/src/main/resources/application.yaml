@@ -1,0 +1,19 @@
+server:
+  port: ${PORT:8083}
+  address: 0.0.0.0
+
+spring:
+  application:
+    name: prestamos-service
+
+app:
+  api-key: ${API_KEY:}
+  admin-correo: ${ADMIN_CORREO:admin@panol.cl}
+
+firebase:
+  credentials-path: ${FIREBASE_CREDENTIALS_PATH:}
+  credentials-base64: ${FIREBASE_CREDENTIALS_BASE64:}
+
+logging:
+  level:
+    org.springframework.web: INFO
